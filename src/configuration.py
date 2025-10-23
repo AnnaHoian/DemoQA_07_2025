@@ -1,4 +1,5 @@
 import configparser
+import configparser
 import os
 from pathlib import Path
 
@@ -6,15 +7,18 @@ from pathlib import Path
 class Configuration:
 
     def __init__(self):
-        self.parser = configparser.ConfigParser()
-        self.parser.read(Path(os.getenv('CONFIG_PATH', 'config.ini')).absolute())
+        self._parser = configparser.ConfigParser()
+        self._parser.read(Path(os.getenv("CONFIG_PATH", "config.ini")).absolute())
+
 
     def get_browser(self):
-        """ Get Selenium instance of driver (Chrome, FF, etc.)"""
-        # TODO DEMO-QA-003 Implement getting selenium driver in configuration class
+        """Get selenium instance of driver (chrome, firefox etc.)"""
+        # TODO DEMO-QA-003 Implement getting selenium driver in config class
         pass
 
     def get_base_url(self):
-        return self.parser.get('demoqa', 'url')
+        return self._parser['demoqa'].get('url')
+
+
 
 CONFIG = Configuration()
